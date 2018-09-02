@@ -11,7 +11,7 @@ class FirebaseeController extends Controller
 
 
     public function index(){
-        $serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/google-service-account.json');
+        $serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/localhost-4a84a-d5a50c170236.json');
 
         $firebase = (new Factory)
             ->withServiceAccount($serviceAccount)
@@ -22,8 +22,7 @@ class FirebaseeController extends Controller
             ->create();
         
         $database = $firebase->getDatabase();
-    var_dump( $database);
-    exit;
+ 
         $newPost = $database
             ->getReference('blog/posts')
             ->push([
@@ -34,8 +33,9 @@ class FirebaseeController extends Controller
         $newPost->getKey(); // => -KVr5eu8gcTv7_AHb-3-
         $newPost->getUri(); // => https://my-project.firebaseio.com/blog/posts/-KVr5eu8gcTv7_AHb-3-
         
-        $newPost->getChild('title')->set('Changed post title');
+        $newPost->getChild('title 2')->set('Changed post title 2');
         $newPost->getValue(); // Fetches the data from the realtime database
-        $newPost->remove();
+        var_dump(  $newPost->getValue());
+       // $newPost->remove();
     }
 }

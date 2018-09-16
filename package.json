@@ -1,0 +1,22 @@
+{
+  "name": "php_and_socket",
+  "version": "1.0.0",
+  "description": "application real time ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hassanhitleap1/chatapp.git"
+  },
+  "author": "hasan kiwan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hassanhitleap1/chatapp/issues"
+  },
+  "homepage": "https://github.com/hassanhitleap1/chatapp#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}

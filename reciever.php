@@ -16,7 +16,9 @@
 
 
 <script>
-
+$(document).ready(function () {
+    console.log(55555555);
+});
     var socket= io.connect('http://localhost:3001');
     socket.on("new_order",function(data){
         console.log( data);

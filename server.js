@@ -1,25 +1,25 @@
+var socket=require('socket.io');
 var app = require('express')();
-var http = require('http').Server(app);
+var http = require('http');
 var io = require('socket.io')(http);
+var logger = require('winston');
 
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
-});
+ logger.remove(logger.transports.Console);
+ logger.add(new logger.transports.Console,{colorize:true,timestamp:true});
+ logger.info(' Socet lessing in port 3001 ');
 
-io.on('connection', function(socket){
-  console.log('a user connected');
-});
 
-http.listen(3000, function(){
-  console.log('listening on *:3000');
-});
+var http_server=  http.createServer(app).listen(3001);
 
 function emmitNewOrder(http_server){
     var io = socket.listen(http_server);
 
-    io.socket.on("new_order",function(data){
-        console.log(data);
+    io.sockets.on("connection",function(socket){
+        socket.on("new_order",function(data){
+          io.emit("new_order",data);
+          console.log("message lessin");
+        });
     });
 }
 
-emmitNewOrder(http_server)
+emmitNewOrder(http_server);
